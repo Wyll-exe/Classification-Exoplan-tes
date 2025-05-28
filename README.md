@@ -7,3 +7,20 @@ Utiliser un jeu de données contenant les propriétés de milliers d’exoplanè
 Explorer les corrélations physiques entre variables
 Classer les exoplanètes en fonction de leurs caractéristiques
 Prévoir si une exoplanète est potentiellement habitable ou non
+
+```
+Installer python !
+
+- python ou py -m pip install pandas
+- python ou py -m pip install -U scikit-learn
+- python ou py -m pip install -U scikit-learn
+- python ou py -m pip install matplotlib
+
+```
+
+Lancer
+
+```
+python exo.py
+
+```
