@@ -2,6 +2,7 @@
 
 import pandas as pd
 
+print("\n-----Question 1-----\n")
 m = 96
 
 df = pd.read_csv("dataset_exoplanets.csv",sep=",",skiprows=m)
@@ -9,20 +10,24 @@ print(df.head())
 
 # 2 - Extraire la liste du nom des colonnes du dataset.
 
+print("\n-----Question 2-----\n")
 print(df.columns)
 
 # 3 - Quelle est la taille du dataset ?
 
+print("\n-----Question 3-----\n")
 print("Taille du dataset : (Lignes, colonnes) :", df.shape)
 
 # 4 - Filtrer les colonnes pour ne garder que des valeurs utiles
 
+print("\n-----Question 4-----\n")
 list_columns = ["pl_name", "sy_snum", "pl_bmassj", "pl_radj", "pl_orbper", "pl_eqt", "discoverymethod", "st_teff", "st_rad", "st_mass", "sy_dist", "pl_orbsmax", "pl_insol"]
 df = df[list_columns]
 print(df)
 
 # 5 - Renommer les colonnes pour qu’elles aient des noms plus explicites, si besoin.
 
+print("\n-----Question 5-----\n")
 new_names = {
     "st_teff": "stellar_temp",
     "sy_dist": "distance_parsecs",
@@ -32,11 +37,13 @@ print(df)
 
 # 6 - Afficher le taux de remplissage de chaque colonne.
 
+print("\n-----Question 6-----\n")
 print("Taux de remplissage de chaque colonne :")
 print(df.isnull().mean() * 100)
 
 # 7 - Repérer où sont les valeurs nulles et proposer une explication. Est-ce que ces valeurs n’existent pas ou est-ce qu’elle n’ont pas été remplies ?
 
+print("\n-----Question 7-----\n")
 print("Valeurs nulles dans le dataset :")
 print(df.isnull().sum())
 
@@ -45,10 +52,12 @@ print(df.isnull().sum())
 
 # 8 - Combien y a-t-il de planètes différentes découvertes ?
 
+print("\n-----Question 8-----\n")
 print("Planètes unique : ", df.pl_name.nunique())
 
 # 9 - Combien y a-t-il de systèmes doubles ? (c’est-à-dire de systèmes de planètes orbitant autour de deux étoiles)
 
+print("\n-----Question 9-----\n")
 print("Systèmes doubles : ", df[df['sy_snum'] >= 2].shape[0])
 
 # 10 - Combien y a-t-il de découvertes controversées ?
