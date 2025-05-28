@@ -17,6 +17,10 @@ print("Taille du dataset : (Lignes, colonnes) :", df.shape)
 
 # 4 - Filtrer les colonnes pour ne garder que des valeurs utiles
 
+list_columns = ["pl_name", "pl_bmassj", "pl_radj", "pl_orbper", "pl_eqt", "discoverymethod", "st_teff", "st_rad", "st_mass", "sy_dist", "pl_orbsmax", "pl_insol"]
+df = df[list_columns]
+print(df)
+
 # 5 - Renommer les colonnes pour qu’elles aient des noms plus explicites, si besoin.
 
 # 6 - Afficher le taux de remplissage de chaque colonne.
