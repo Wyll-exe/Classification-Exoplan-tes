@@ -13,6 +13,8 @@ print(df.columns)
 
 # 3 - Quelle est la taille du dataset ?
 
+print("Taille du dataset : (Lignes, colonnes) :", df.shape)
+
 # 4 - Filtrer les colonnes pour ne garder que des valeurs utiles
 
 # 5 - Renommer les colonnes pour qu’elles aient des noms plus explicites, si besoin.
