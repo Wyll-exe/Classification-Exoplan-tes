@@ -40,6 +40,8 @@ print(df.isnull().mean() * 100)
 print("Valeurs nulles dans le dataset :")
 print(df.isnull().sum())
 
+# ces valeurs nulles existent mais les calculs n'ont pas été effectués pour obtenir les résultats , selon la distance de la planète, sa masse, son rayon, etc et le type de données peut varier.
+
 
 # 8 - Combien y a-t-il de planètes différentes découvertes ?
 
