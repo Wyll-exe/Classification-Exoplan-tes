@@ -1,6 +1,8 @@
 # 1 - Charger le fichier avec read_csv(). Vous devrez utiliser l’option skip_rows (voir la documentation de pandas) puis appliquer la fonction .head()
 
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 print("\n-----Question 1-----\n")
 m = 96
@@ -87,8 +89,6 @@ print(df_grouped[["pl_name","pl_orbper"]].head(10))
 # 13 - Tracer la distribution de chaque indicateur (fonction histplot() de seaborn)
 
 print("\n-----Question 13-----\n")
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 
 col = 'sy_snum'  # nom de la colonne spécifique
