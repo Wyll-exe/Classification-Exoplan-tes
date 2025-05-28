@@ -73,11 +73,33 @@ print("Année avec le plus d'exoplanètes découvertes :" , df['disc_year'].mode
 # 12 - Y a-t-il des doublons ? Vous pourrez utiliser les fonctions duplicated() pour répondre à cette question.	 Vous pouvez explorer la fonction drop_duplicates() de Python ensuite pour vous séparer des doublons.
 
 print("\n-----Question 12-----\n")
-print("Doublons dans le dataset : ", df.duplicated().sum())
-print('Nombre de lignes avant suppression des doublons : ', df.shape[0])
-print("Nombre de lignes après suppression des doublons : ", df.drop_duplicates().shape[0])
+print("Doublons dans le dataset : ", df["pl_name"].duplicated().sum())
+print("Nombre de lignes avant suppression des doublons : ", df["pl_name"].shape[0])
+print("Nombre de lignes après suppression des doublons : ", df["pl_name"].drop_duplicates().shape[0])
+colonnes_numeriques = df.select_dtypes(include=['number']).columns
+df_num = df[['pl_name'] + list(colonnes_numeriques)]
+df_grouped = df_num.groupby('pl_name', as_index=False).mean()
+print("Nombre de lignes après regroupement par nom de planète : ", df_grouped.shape[0])
+print(df_grouped.isnull().sum())
 
+print(df[["pl_name","pl_orbper"]].head(10))
+print(df_grouped[["pl_name","pl_orbper"]].head(10))
 # 13 - Tracer la distribution de chaque indicateur (fonction histplot() de seaborn)
+
+print("\n-----Question 13-----\n")
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+
+col = 'sy_snum'  # nom de la colonne spécifique
+
+plt.figure(figsize=(8, 4))
+sns.histplot(df_grouped[col].dropna(), kde=False) 
+plt.title(f'Distribution de {col}')
+plt.xlabel(col)
+plt.ylabel('Fréquence')
+plt.show()
+print("Distribution de chaque indicateur tracée.")
 
 # 14 - Tracer un boxplot pour chaque indicateur (fonction boxplot() de seaborn)
 
