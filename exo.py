@@ -9,6 +9,8 @@ print(df.head())
 
 # 2 - Extraire la liste du nom des colonnes du dataset.
 
+print(df.columns)
+
 # 3 - Quelle est la taille du dataset ?
 
 # 4 - Filtrer les colonnes pour ne garder que des valeurs utiles
