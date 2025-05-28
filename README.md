@@ -13,8 +13,9 @@ Installer python !
 
 - python ou py -m pip install pandas
 - python ou py -m pip install -U scikit-learn
-- python ou py -m pip install -U scikit-learn
+- python ou py -m pip install numpy
 - python ou py -m pip install matplotlib
+- python ou py -m pip install seaborn
 
 ```
 
