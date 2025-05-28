@@ -25,7 +25,14 @@ print(df)
 
 # 6 - Afficher le taux de remplissage de chaque colonne.
 
+print("Taux de remplissage de chaque colonne :")
+print(df.isnull().mean() * 100)
+
 # 7 - Repérer où sont les valeurs nulles et proposer une explication. Est-ce que ces valeurs n’existent pas ou est-ce qu’elle n’ont pas été remplies ?
+
+print("Valeurs nulles dans le dataset :")
+print(df.isnull().sum())
+
 
 # 8 - Combien y a-t-il de planètes différentes découvertes ?
 
