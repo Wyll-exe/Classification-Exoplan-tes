@@ -21,7 +21,7 @@ print("Taille du dataset : (Lignes, colonnes) :", df.shape)
 # 4 - Filtrer les colonnes pour ne garder que des valeurs utiles
 
 print("\n-----Question 4-----\n")
-list_columns = ["pl_name", "sy_snum", "pl_bmassj", "pl_radj", "pl_orbper", "pl_eqt", "discoverymethod", "st_teff", "st_rad", "st_mass", "sy_dist", "pl_orbsmax", "pl_insol"]
+list_columns = ["pl_name", "sy_snum", "pl_bmassj", "pl_radj", "pl_orbper", "pl_eqt", "discoverymethod", "st_teff", "st_rad", "st_mass", "sy_dist", "pl_orbsmax", "pl_insol", 'pl_controv_flag']
 df = df[list_columns]
 print(df)
 
@@ -61,6 +61,9 @@ print("\n-----Question 9-----\n")
 print("Systèmes doubles : ", df[df['sy_snum'] >= 2].shape[0])
 
 # 10 - Combien y a-t-il de découvertes controversées ?
+
+print("\n-----Question 10-----\n")
+print("Découvertes controversées : ", df[df['pl_controv_flag'] >= 1].shape[0])
 
 # 11 - Y a-t-il des doublons ? Vous pourrez utiliser la fonction duplicated() pour répondre à cette question.
 
