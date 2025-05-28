@@ -23,6 +23,13 @@ print(df)
 
 # 5 - Renommer les colonnes pour qu’elles aient des noms plus explicites, si besoin.
 
+new_names = {
+    "st_teff": "stellar_temp",
+    "sy_dist": "distance_parsecs",
+}
+df = df.rename(new_names, axis=1)
+print(df)
+
 # 6 - Afficher le taux de remplissage de chaque colonne.
 
 # 7 - Repérer où sont les valeurs nulles et proposer une explication. Est-ce que ces valeurs n’existent pas ou est-ce qu’elle n’ont pas été remplies ?
