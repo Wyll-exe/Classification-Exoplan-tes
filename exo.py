@@ -17,7 +17,7 @@ print("Taille du dataset : (Lignes, colonnes) :", df.shape)
 
 # 4 - Filtrer les colonnes pour ne garder que des valeurs utiles
 
-list_columns = ["pl_name", "pl_bmassj", "pl_radj", "pl_orbper", "pl_eqt", "discoverymethod", "st_teff", "st_rad", "st_mass", "sy_dist", "pl_orbsmax", "pl_insol"]
+list_columns = ["pl_name", "sy_snum", "pl_bmassj", "pl_radj", "pl_orbper", "pl_eqt", "discoverymethod", "st_teff", "st_rad", "st_mass", "sy_dist", "pl_orbsmax", "pl_insol"]
 df = df[list_columns]
 print(df)
 
@@ -43,7 +43,11 @@ print(df.isnull().sum())
 
 # 8 - Combien y a-t-il de planètes différentes découvertes ?
 
+print("Planètes unique : ", df.pl_name.nunique())
+
 # 9 - Combien y a-t-il de systèmes doubles ? (c’est-à-dire de systèmes de planètes orbitant autour de deux étoiles)
+
+print("Systèmes doubles : ", df[df['sy_snum'] >= 2].shape[0])
 
 # 10 - Combien y a-t-il de découvertes controversées ?
 
