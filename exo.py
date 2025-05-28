@@ -21,7 +21,7 @@ print("Taille du dataset : (Lignes, colonnes) :", df.shape)
 # 4 - Filtrer les colonnes pour ne garder que des valeurs utiles
 
 print("\n-----Question 4-----\n")
-list_columns = ["pl_name", "sy_snum", "pl_bmassj", "pl_radj", "pl_orbper", "pl_eqt", "discoverymethod", "st_teff", "st_rad", "st_mass", "sy_dist", "pl_orbsmax", "pl_insol", 'pl_controv_flag']
+list_columns = ["pl_name", "sy_snum", "pl_bmassj", "pl_radj", "pl_orbper", "pl_eqt", "discoverymethod","disc_year", "st_teff", "st_rad", "st_mass", "sy_dist", "pl_orbsmax", "pl_insol", 'pl_controv_flag']
 df = df[list_columns]
 print(df)
 
@@ -67,7 +67,15 @@ print("Découvertes controversées : ", df[df['pl_controv_flag'] >= 1].shape[0])
 
 # 11 - En quelle année a-t-on découvert le plus d’exoplanètes ?
 
+print("\n-----Question 11-----\n")
+print("Année avec le plus d'exoplanètes découvertes :" , df['disc_year'].mode()[0])
+
 # 12 - Y a-t-il des doublons ? Vous pourrez utiliser les fonctions duplicated() pour répondre à cette question.	 Vous pouvez explorer la fonction drop_duplicates() de Python ensuite pour vous séparer des doublons.
+
+print("\n-----Question 12-----\n")
+print("Doublons dans le dataset : ", df.duplicated().sum())
+print('Nombre de lignes avant suppression des doublons : ', df.shape[0])
+print("Nombre de lignes après suppression des doublons : ", df.drop_duplicates().shape[0])
 
 # 13 - Tracer la distribution de chaque indicateur (fonction histplot() de seaborn)
 
