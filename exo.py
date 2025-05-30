@@ -105,6 +105,12 @@ print("Distribution de chaque indicateur tracée.")
 
 # 15 - Calculer la matrice de corrélation et afficher là avec la fonction heatmap() de seaborn. Y a-t-il corrélation entre certaines variables ?
 
+print("\n-----Question 15-----\n")
+df_correlation = df_grouped.drop(columns=['pl_name']).corr(numeric_only=True)
+print(df_correlation.corr(numeric_only=True))
+print(sns.heatmap(df_correlation, annot=True, linewidth=.5))
+plt.show()
+
 # 16 - La troisième loi de Kepler est-elle vérifiée dans le dataset ?
 
 # 17 - Tracer le graphique suivant :
