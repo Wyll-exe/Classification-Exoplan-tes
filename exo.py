@@ -3,6 +3,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import numpy as np
 
 print("\n-----Question 1-----\n")
 m = 96
@@ -114,6 +115,28 @@ plt.show()
 # Il y a une corrélation entre pl_orbsmax et pl_orbper ainsi qu'une corrélation forte entre pl_insol et pl_eqt
 
 # 16 - La troisième loi de Kepler est-elle vérifiée dans le dataset ?
+
+print("\n-----Question 16-----\n")
+# Supprime les lignes avec valeurs manquantes
+df_kepler = df[['pl_orbper', 'pl_orbsmax']].dropna()
+
+# Conversion en années
+df_kepler['orbper_years'] = df_kepler['pl_orbper'] / 365.25
+
+# Calculs P² et a³
+df_kepler['P_squared'] = df_kepler['orbper_years'] ** 2
+df_kepler['a_cubed'] = df_kepler['pl_orbsmax'] ** 3
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x=np.log10(df_kepler['a_cubed']), y=np.log10(df_kepler['P_squared']))
+plt.xlabel("log₁₀(a³)")
+plt.ylabel("log₁₀(P²)")
+plt.title("Vérification de la 3e loi de Kepler (log-log)")
+plt.grid(True)
+plt.show()
+correlation = df_kepler['P_squared'].corr(df_kepler['a_cubed'])
+print("Corrélation entre P² et a³ :", correlation)
+
+# La troisième loi de Kepler est vérifiée dans ce dataset
 
 # 17 - Tracer le graphique suivant :
 
