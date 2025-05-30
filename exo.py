@@ -104,6 +104,16 @@ print("Distribution de chaque indicateur tracée.")
 
 # 14 - Tracer un boxplot pour chaque indicateur (fonction boxplot() de seaborn)
 
+print("\n-----Question 14-----\n")
+sns.boxplot(data=df_grouped, x="sy_snum", y="sy_planet_count")
+plt.title("Nombre de planètes par système")
+plt.xlabel("Système de planètes")
+plt.ylabel("Nombre de planètes")
+plt.xticks(rotation=45)
+plt.show()
+print("Boxplot pour chaque indicateur tracé.")
+
+
 # 15 - Calculer la matrice de corrélation et afficher là avec la fonction heatmap() de seaborn. Y a-t-il corrélation entre certaines variables ?
 
 print("\n-----Question 15-----\n")
