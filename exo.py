@@ -111,6 +111,8 @@ print(df_correlation.corr(numeric_only=True))
 print(sns.heatmap(df_correlation, annot=True, linewidth=.5))
 plt.show()
 
+# Il y a une corrélation entre pl_orbsmax et pl_orbper ainsi qu'une corrélation forte entre pl_insol et pl_eqt
+
 # 16 - La troisième loi de Kepler est-elle vérifiée dans le dataset ?
 
 # 17 - Tracer le graphique suivant :
