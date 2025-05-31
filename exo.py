@@ -24,7 +24,7 @@ print("Taille du dataset : (Lignes, colonnes) :", df.shape)
 # 4 - Filtrer les colonnes pour ne garder que des valeurs utiles
 
 print("\n-----Question 4-----\n")
-list_columns = ["pl_name", "sy_snum", "pl_bmassj", "pl_radj", "pl_orbper", "pl_eqt", "discoverymethod","disc_year", "st_teff", "st_rad", "st_mass", "sy_dist", "pl_orbsmax", "pl_insol", 'pl_controv_flag']
+list_columns = ["pl_name", "sy_pnum", "pl_orbeccen", "sy_snum", "pl_bmassj", "pl_radj", "pl_orbper", "pl_eqt", "discoverymethod","disc_year", "st_teff", "st_rad", "st_mass", "sy_dist", "pl_orbsmax", "pl_insol", 'pl_controv_flag']
 df = df[list_columns]
 print(df)
 
@@ -91,6 +91,7 @@ print(df_grouped[["pl_name","pl_orbper"]].head(10))
 
 print("\n-----Question 13-----\n")
 
+print("exemple 1")
 
 col = 'sy_snum'  # nom de la colonne spécifique
 
@@ -102,12 +103,38 @@ plt.ylabel('Fréquence')
 plt.show()
 print("Distribution de chaque indicateur tracée.")
 
+print("exemple 2")
+
+col = 'sy_pnum'  # nom de la colonne spécifique
+
+plt.figure(figsize=(8, 4))
+sns.histplot(df_grouped[col].dropna(), kde=False) 
+plt.title(f'Distribution de {col}')
+plt.xlabel(col)
+plt.ylabel('Fréquence')
+plt.show()
+print("Distribution de chaque indicateur tracée.")
+
+print("exemple 3")
+
+col = 'pl_orbeccen'  # nom de la colonne spécifique
+
+plt.figure(figsize=(8, 4))
+sns.histplot(df_grouped[col].dropna(), kde=False) 
+plt.title(f'Distribution de {col}')
+plt.xlabel(col)
+plt.ylabel('Fréquence')
+plt.show()
+print("Distribution de chaque indicateur tracée.")
+
+
 # 14 - Tracer un boxplot pour chaque indicateur (fonction boxplot() de seaborn)
 
 print("\n-----Question 14-----\n")
-sns.boxplot(data=df_grouped, x="sy_snum", y="sy_planet_count")
-plt.title("Nombre de planètes par système")
-plt.xlabel("Système de planètes")
+# Boxplot du nombre de planètes par système d'étoiles
+sns.boxplot(data=df, x="sy_snum", y="sy_pnum")
+plt.title("Nombre de planètes par système d'étoiles")
+plt.xlabel("Nombre d'étoiles dans le système")
 plt.ylabel("Nombre de planètes")
 plt.xticks(rotation=45)
 plt.show()
@@ -149,6 +176,48 @@ print("Corrélation entre P² et a³ :", correlation)
 # La troisième loi de Kepler est vérifiée dans ce dataset
 
 # 17 - Tracer le graphique suivant :
+
+print("\n-----Question 17-----\n")
+
+# 1. Conversion du rayon en rayons terrestres si nécessaire
+if 'pl_rade' in df.columns:
+    df['radius_earth'] = df['pl_rade']
+else:
+    df['radius_earth'] = df['pl_radj'] * 11.2  # 1 Jupiter radius = 11.2 Earth radii
+
+# 2. Définition des intervalles et labels pour chaque catégorie de planète
+bins = [0, 0.53, 1, 1.75, 3.5, 6, 9, 15, 22]
+labels = [
+    'mars-sized', 
+    'earth-sized', 
+    'super-earth-sized', 
+    'sub-neptune-sized', 
+    'neptune-sized', 
+    'sub-jupiter-sized', 
+    'jupiter-sized', 
+    'super-jupiter-sized'
+]
+
+# 3. Création de la colonne planet_type
+df['planet_type'] = pd.cut(df['radius_earth'], bins=bins, labels=labels, right=True, include_lowest=True)
+
+# 4. Comptage des planètes par catégorie
+planet_counts = df['planet_type'].value_counts().reindex(labels, fill_value=0)
+
+# 5. Tracé du barplot
+plt.figure(figsize=(12,6))
+sns.barplot(x=planet_counts.index, y=planet_counts.values, color='#FFB300')
+plt.title("Known transiting planets by size category")
+plt.xlabel("Planet type")
+plt.ylabel("Number of planets")
+plt.tight_layout()
+plt.show()
+print("Barplot des planètes par type tracé.")
+
+# Affichage de quelques lignes pour contrôle
+print(df[['pl_name', 'radius_earth', 'planet_type']].head(10))
+
+
 
 # 18 - Partout où c’est possible, calculez la densité de la planète avec la formule suivante, exprimant le rapport entre la masse de la planète et son volume :
 
