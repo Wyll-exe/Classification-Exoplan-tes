@@ -16,12 +16,27 @@ Installer python !
 - python ou py -m pip install numpy
 - python ou py -m pip install matplotlib
 - python ou py -m pip install seaborn
+- python ou py -m pip install streamlit
 
 ```
 
-Lancer
+## Lancer
 
 ```
 python exo.py
+
+```
+
+## Pour lancer le site :
+
+1. Accédez au répertoire du projet :
+```bash
+cd app
+
+```
+
+2. Lancer l'app :
+```bash
+streamlit run exoplanets.py
 
 ```
