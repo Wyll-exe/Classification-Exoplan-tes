@@ -48,3 +48,47 @@ df_density['composition'] = df_density['density_g_cm3'].apply(
 
 # Affichage des résultats
 st.write(df_density[['pl_name', 'density_g_cm3', 'composition']].head(10))
+
+st.subheader("Question 20 : Quel critère utiliser pour remplir les labels sur la composition à partir des planètes du système solaire ? Vous pourrez utiliser un critère de seuil et un algorithme de classification supervisée, entraîné sur les données du système solaire, puis comparer les résultats.")
+
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+
+# Données du Système Solaire (exemple simplifié)
+# Nom, masse (M_Jup), rayon (R_Jup), densité (g/cm³), composition
+solar_data = [
+    # rocky planets
+    ["Mercure", 0.00017, 0.034, 5.43, "rocky"],
+    ["Vénus",   0.00256, 0.087, 5.24, "rocky"],
+    ["Terre",   0.00315, 0.089, 5.51, "rocky"],
+    ["Mars",    0.00034, 0.047, 3.93, "rocky"],
+    # gaseous planets
+    ["Jupiter", 1.0,     1.0,   1.33, "gaseous"],
+    ["Saturne", 0.299,   0.843, 0.69, "gaseous"],
+    ["Uranus",  0.046,   0.357, 1.27, "gaseous"],
+    ["Neptune", 0.054,   0.346, 1.64, "gaseous"],
+]
+
+# DataFrame des données
+solar_df = pd.DataFrame(solar_data, columns=["name", "pl_bmassj", "pl_radj", "density_g_cm3", "composition"])
+
+# Données d'entrainement
+X_train = solar_df[["density_g_cm3"]]
+y_train = solar_df["composition"]
+
+# Entrainement de l'arbre 
+clf = DecisionTreeClassifier(max_depth=None, random_state=None)
+clf.fit(X_train, y_train)
+
+# Test de l'arbre sur les explonates
+
+X_test = df_density[["density_g_cm3"]]
+df_density["composition_tree_density"] = clf.predict(X_test)
+
+# Affichage de l'arbre
+plt.figure(figsize=(10,5))
+plot_tree(clf, feature_names=["density"], class_names=clf.classes_, filled=True)
+st.pyplot(plt.gcf())
+plt.clf()
+
+# Comparaison des deux méthodes
+st.dataframe(df_density[["pl_name", "density_g_cm3", "composition", "composition_tree"]].head(10))
