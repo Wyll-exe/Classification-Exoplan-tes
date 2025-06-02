@@ -82,7 +82,7 @@ clf.fit(X_train, y_train)
 # Test de l'arbre sur les explonates
 
 X_test = df_density[["density_g_cm3"]]
-df_density["composition_tree_density"] = clf.predict(X_test)
+df_density["composition_tree"] = clf.predict(X_test)
 
 # Affichage de l'arbre
 plt.figure(figsize=(10,5))

@@ -260,6 +260,7 @@ print(df_density[['pl_name', 'density_g_cm3', 'composition']].head(10))
 # 20 - Quel critère utiliser pour remplir les labels sur la composition à partir des planètes du système solaire ? Vous pourrez utiliser un critère de seuil et un algorithme de classification supervisée, entraîné sur les données du système solaire, puis comparer les résultats.
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 
+print("\n-----Question 20-----\n")
 # Données du Système Solaire (exemple simplifié)
 # Nom, masse (M_Jup), rayon (R_Jup), densité (g/cm³), composition
 solar_data = [
