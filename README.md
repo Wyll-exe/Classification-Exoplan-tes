@@ -32,14 +32,14 @@ Installer python !
 
 ## Auteurs 🙇 :
 
-- Arthur ~ [@GitHub] (https://github.com/L0wBly)
-- Cyril ~ [@GitHub] (https://github.com/Cyril-Mathe)
-- William ~ [@GitHub] (https://github.com/Wyll-exe)
+- Arthur ~ [@GitHub](https://github.com/L0wBly)
+- Cyril ~ [@GitHub](https://github.com/Cyril-Mathe)
+- William ~ [@GitHub](https://github.com/Wyll-exe)
   
 
 ## Source 🔍️
 
-1. [data] (https://exoplanetarchive.ipac.caltech.edu/docs/data.html)
+1. [data](https://exoplanetarchive.ipac.caltech.edu/docs/data.html)
 
 
 ## Lancer 🚀
