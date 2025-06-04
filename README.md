@@ -1,5 +1,5 @@
 # Classification-Exoplan-tes
-![image](https://github.com/user-attachments/assets/50a566eb-244f-4a32-b95c-6017451e4daf)
+
 
 
 Objectifs
