@@ -8,7 +8,7 @@ st.write("## Premiers traitements / analyses à mener")
 
 m = 96
 
-df = pd.read_csv("../dataset_exoplanets.csv",sep=",",skiprows=m)
+df = pd.read_csv("dataset_exoplanets.csv",sep=",",skiprows=m)
 
 st.subheader("Question 1 : Charger le fichier avec read_csv(). Vous devrez utiliser l’option skip_rows (voir la documentation de pandas) puis appliquer la fonction .head()")
 st.dataframe(df.head())

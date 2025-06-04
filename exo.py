@@ -8,7 +8,7 @@ import numpy as np
 print("\n-----Question 1-----\n")
 m = 96
 
-df = pd.read_csv("dataset_exoplanets.csv",sep=",",skiprows=m)
+df = pd.read_csv("app/dataset_exoplanets.csv",sep=",",skiprows=m)
 print(df.head())
 
 # 2 - Extraire la liste du nom des colonnes du dataset.
