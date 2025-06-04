@@ -131,14 +131,34 @@ print("Distribution de chaque indicateur tracée.")
 # 14 - Tracer un boxplot pour chaque indicateur (fonction boxplot() de seaborn)
 
 print("\n-----Question 14-----\n")
-# Boxplot du nombre de planètes par système d'étoiles
-sns.boxplot(data=df, x="sy_snum", y="sy_pnum")
-plt.title("Nombre de planètes par système d'étoiles")
-plt.xlabel("Nombre d'étoiles dans le système")
-plt.ylabel("Nombre de planètes")
+plt.figure(figsize=(14, 6))
+sns.boxplot(data=df, x="disc_year", y="pl_bmassj")
+plt.title("Distribution de la masse des planètes par année de découverte")
+plt.xlabel("Année de découverte")
+plt.ylabel("Masse des planètes (pl_bmassj)")
 plt.xticks(rotation=45)
 plt.show()
-print("Boxplot pour chaque indicateur tracé.")
+
+plt.figure(figsize=(14, 6))
+sns.boxplot(data=df, x="disc_year", y="sy_snum")
+plt.title("Distribution du nombre de systèmes par année de découverte")
+plt.xlabel("Année de découverte")
+plt.ylabel("Nombre de systèmes (sy_snum)")
+plt.xticks(rotation=45)
+plt.show()
+
+plt.figure(figsize=(8, 4))
+sns.boxplot(y=df["pl_radj"])
+plt.title("Distribution du rayon des planètes")
+plt.ylabel("Rayon des planètes (pl_radj)")
+plt.show()
+
+
+plt.figure(figsize=(8, 4))
+sns.boxplot(y=df["pl_eqt"])
+plt.title("Distribution de la température d'équilibre des planètes")
+plt.ylabel("Température d'équilibre (pl_eqt)")
+plt.show()
 
 
 # 15 - Calculer la matrice de corrélation et afficher là avec la fonction heatmap() de seaborn. Y a-t-il corrélation entre certaines variables ?
