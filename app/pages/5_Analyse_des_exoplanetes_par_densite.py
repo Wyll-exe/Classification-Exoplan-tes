@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -92,3 +91,5 @@ plt.clf()
 
 # Comparaison des deux méthodes
 st.dataframe(df_density[["pl_name", "density_g_cm3", "composition", "composition_tree"]].head(10))
+
+st.session_state['df6'] = df5
