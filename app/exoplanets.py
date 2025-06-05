@@ -1,17 +1,26 @@
 import streamlit as st
 import pandas as pd
+import os
 
-st.set_page_config(page_title="Exoplanètes", page_icon="🪐")
+def file_selector(folder_path='.'):
+    # Filtrer pour ne proposer que les fichiers CSV
+    filenames = [f for f in os.listdir(folder_path) if f.endswith('.csv')]
+    selected_filename = st.selectbox('Sélectionnez un fichier CSV', filenames)
+    return os.path.join(folder_path, selected_filename)
 
-st.title("Projet exoplanètes")
-st.write("## Premiers traitements / analyses à mener")
+# Sélection du fichier
+folder = '.'  # ou le chemin de ton dossier
+filename = file_selector(folder)
+st.write('Fichier sélectionné : `%s`' % filename)
 
-m = 96
+# Paramètres pour read_csv
+sep = st.text_input("Séparateur", value=",")
+skiprows = st.number_input("Nombre de lignes à sauter (skiprows)", min_value=0, value=0, step=1)
 
-df = pd.read_csv("dataset_exoplanets.csv",sep=",",skiprows=m)
-
-st.subheader("Question 1 : Charger le fichier avec read_csv(). Vous devrez utiliser l’option skip_rows (voir la documentation de pandas) puis appliquer la fonction .head()")
-st.dataframe(df.head())
+# Charger le fichier si l'utilisateur clique sur un bouton
+if st.button("Charger le fichier"):
+    df = pd.read_csv(filename, sep=sep, skiprows=skiprows)
+    st.dataframe(df.head())
 
 st.subheader("Question 2 : Extraire la liste du nom des colonnes du dataset.")
 st.dataframe(df.columns)
